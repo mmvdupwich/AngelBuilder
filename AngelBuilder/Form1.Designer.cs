@@ -28,13 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.Button_WeaponEditor = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // Button_WeaponEditor
+            // 
+            this.Button_WeaponEditor.Location = new System.Drawing.Point(12, 12);
+            this.Button_WeaponEditor.Name = "Button_WeaponEditor";
+            this.Button_WeaponEditor.Size = new System.Drawing.Size(142, 44);
+            this.Button_WeaponEditor.TabIndex = 0;
+            this.Button_WeaponEditor.Text = "Weapon Editor";
+            this.Button_WeaponEditor.UseVisualStyleBackColor = true;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.Controls.Add(this.Button_WeaponEditor);
+            this.Name = "Form1";
+            this.Text = "AngelBuilder Data Editor";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button Button_WeaponEditor;
     }
 }
 
