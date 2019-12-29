@@ -16,5 +16,11 @@ namespace AngelBuilder
         {
             InitializeComponent();
         }
+
+        private void Button_WeaponEditor_Click(object sender, EventArgs e)
+        {
+            var we = new WeaponEditor();
+            we.Show();
+        }
     }
 }

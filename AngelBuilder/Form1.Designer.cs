@@ -39,6 +39,7 @@
             this.Button_WeaponEditor.TabIndex = 0;
             this.Button_WeaponEditor.Text = "Weapon Editor";
             this.Button_WeaponEditor.UseVisualStyleBackColor = true;
+            this.Button_WeaponEditor.Click += new System.EventHandler(this.Button_WeaponEditor_Click);
             // 
             // Form1
             // 
