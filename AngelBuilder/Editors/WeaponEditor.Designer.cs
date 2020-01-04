@@ -46,7 +46,16 @@
             this.label8 = new System.Windows.Forms.Label();
             this.Text_Abi = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Button_Save = new System.Windows.Forms.Button();
+            this.Button_Prev = new System.Windows.Forms.Button();
+            this.Button_Search = new System.Windows.Forms.Button();
+            this.Button_Next = new System.Windows.Forms.Button();
+            this.Label_Amount = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.Label_Total = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.Button_Delete = new System.Windows.Forms.Button();
+            this.Button_New = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -64,6 +73,7 @@
             this.Text_Id.Name = "Text_Id";
             this.Text_Id.Size = new System.Drawing.Size(374, 22);
             this.Text_Id.TabIndex = 1;
+            this.Text_Id.Text = "Weapon Id (Unique)";
             // 
             // Text_Name
             // 
@@ -71,6 +81,7 @@
             this.Text_Name.Name = "Text_Name";
             this.Text_Name.Size = new System.Drawing.Size(374, 22);
             this.Text_Name.TabIndex = 3;
+            this.Text_Name.Text = "Weapon Name";
             // 
             // label2
             // 
@@ -87,6 +98,7 @@
             this.Text_Points.Name = "Text_Points";
             this.Text_Points.Size = new System.Drawing.Size(88, 22);
             this.Text_Points.TabIndex = 5;
+            this.Text_Points.Text = "Points";
             // 
             // label3
             // 
@@ -103,6 +115,7 @@
             this.Text_Range.Name = "Text_Range";
             this.Text_Range.Size = new System.Drawing.Size(88, 22);
             this.Text_Range.TabIndex = 7;
+            this.Text_Range.Text = "Range";
             // 
             // label4
             // 
@@ -119,6 +132,7 @@
             this.Text_Type.Name = "Text_Type";
             this.Text_Type.Size = new System.Drawing.Size(148, 22);
             this.Text_Type.TabIndex = 9;
+            this.Text_Type.Text = "Type";
             // 
             // label5
             // 
@@ -135,6 +149,7 @@
             this.Text_Strength.Name = "Text_Strength";
             this.Text_Strength.Size = new System.Drawing.Size(88, 22);
             this.Text_Strength.TabIndex = 11;
+            this.Text_Strength.Text = "Strength";
             // 
             // label6
             // 
@@ -151,6 +166,7 @@
             this.Text_Ap.Name = "Text_Ap";
             this.Text_Ap.Size = new System.Drawing.Size(88, 22);
             this.Text_Ap.TabIndex = 13;
+            this.Text_Ap.Text = "AP";
             // 
             // label7
             // 
@@ -167,6 +183,7 @@
             this.Text_Dmg.Name = "Text_Dmg";
             this.Text_Dmg.Size = new System.Drawing.Size(88, 22);
             this.Text_Dmg.TabIndex = 15;
+            this.Text_Dmg.Text = "Damage";
             // 
             // label8
             // 
@@ -184,6 +201,7 @@
             this.Text_Abi.Name = "Text_Abi";
             this.Text_Abi.Size = new System.Drawing.Size(374, 118);
             this.Text_Abi.TabIndex = 17;
+            this.Text_Abi.Text = "Ability";
             // 
             // label9
             // 
@@ -194,22 +212,117 @@
             this.label9.TabIndex = 16;
             this.label9.Text = "Wp_Ab";
             // 
-            // button1
+            // Button_Save
             // 
-            this.button1.Location = new System.Drawing.Point(189, 361);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Button_Save.Location = new System.Drawing.Point(221, 207);
+            this.Button_Save.Name = "Button_Save";
+            this.Button_Save.Size = new System.Drawing.Size(219, 23);
+            this.Button_Save.TabIndex = 18;
+            this.Button_Save.Text = "Save";
+            this.Button_Save.UseVisualStyleBackColor = true;
+            this.Button_Save.Click += new System.EventHandler(this.Button_Save_Click);
+            // 
+            // Button_Prev
+            // 
+            this.Button_Prev.Enabled = false;
+            this.Button_Prev.Location = new System.Drawing.Point(221, 91);
+            this.Button_Prev.Name = "Button_Prev";
+            this.Button_Prev.Size = new System.Drawing.Size(106, 23);
+            this.Button_Prev.TabIndex = 20;
+            this.Button_Prev.Text = "<<";
+            this.Button_Prev.UseVisualStyleBackColor = true;
+            this.Button_Prev.Click += new System.EventHandler(this.Button_Prev_Click);
+            // 
+            // Button_Search
+            // 
+            this.Button_Search.Location = new System.Drawing.Point(221, 149);
+            this.Button_Search.Name = "Button_Search";
+            this.Button_Search.Size = new System.Drawing.Size(219, 23);
+            this.Button_Search.TabIndex = 22;
+            this.Button_Search.Text = "Search";
+            this.Button_Search.UseVisualStyleBackColor = true;
+            // 
+            // Button_Next
+            // 
+            this.Button_Next.Location = new System.Drawing.Point(335, 91);
+            this.Button_Next.Name = "Button_Next";
+            this.Button_Next.Size = new System.Drawing.Size(106, 23);
+            this.Button_Next.TabIndex = 21;
+            this.Button_Next.Text = ">>";
+            this.Button_Next.UseVisualStyleBackColor = true;
+            this.Button_Next.Click += new System.EventHandler(this.Button_Next_Click);
+            // 
+            // Label_Amount
+            // 
+            this.Label_Amount.AutoSize = true;
+            this.Label_Amount.Location = new System.Drawing.Point(241, 71);
+            this.Label_Amount.Name = "Label_Amount";
+            this.Label_Amount.Size = new System.Drawing.Size(35, 17);
+            this.Label_Amount.TabIndex = 24;
+            this.Label_Amount.Text = "XXX";
+            this.Label_Amount.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(275, 71);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(12, 17);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "/";
+            // 
+            // Label_Total
+            // 
+            this.Label_Total.AutoSize = true;
+            this.Label_Total.Location = new System.Drawing.Point(285, 71);
+            this.Label_Total.Name = "Label_Total";
+            this.Label_Total.Size = new System.Drawing.Size(35, 17);
+            this.Label_Total.TabIndex = 26;
+            this.Label_Total.Text = "XXX";
+            this.Label_Total.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(322, 71);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(104, 17);
+            this.label11.TabIndex = 27;
+            this.label11.Text = "Total Weapons";
+            // 
+            // Button_Delete
+            // 
+            this.Button_Delete.Location = new System.Drawing.Point(221, 178);
+            this.Button_Delete.Name = "Button_Delete";
+            this.Button_Delete.Size = new System.Drawing.Size(219, 23);
+            this.Button_Delete.TabIndex = 23;
+            this.Button_Delete.Text = "Delete";
+            this.Button_Delete.UseVisualStyleBackColor = true;
+            // 
+            // Button_New
+            // 
+            this.Button_New.Location = new System.Drawing.Point(222, 120);
+            this.Button_New.Name = "Button_New";
+            this.Button_New.Size = new System.Drawing.Size(219, 23);
+            this.Button_New.TabIndex = 19;
+            this.Button_New.Text = "New";
+            this.Button_New.UseVisualStyleBackColor = true;
             // 
             // WeaponEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(453, 396);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(453, 371);
+            this.Controls.Add(this.Button_New);
+            this.Controls.Add(this.Button_Delete);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.Label_Total);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.Label_Amount);
+            this.Controls.Add(this.Button_Search);
+            this.Controls.Add(this.Button_Next);
+            this.Controls.Add(this.Button_Prev);
+            this.Controls.Add(this.Button_Save);
             this.Controls.Add(this.Text_Abi);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.Text_Dmg);
@@ -256,6 +369,15 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox Text_Abi;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Button_Save;
+        private System.Windows.Forms.Button Button_Prev;
+        private System.Windows.Forms.Button Button_Search;
+        private System.Windows.Forms.Button Button_Next;
+        private System.Windows.Forms.Label Label_Amount;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label Label_Total;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button Button_Delete;
+        private System.Windows.Forms.Button Button_New;
     }
 }
