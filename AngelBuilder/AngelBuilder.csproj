@@ -183,6 +183,12 @@
     <Compile Include="Editors\WeaponEditor.Designer.cs">
       <DependentUpon>WeaponEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\WeaponSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\WeaponSearch.Designer.cs">
+      <DependentUpon>WeaponSearch.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -197,6 +203,9 @@
     </Compile>
     <EmbeddedResource Include="Editors\WeaponEditor.resx">
       <DependentUpon>WeaponEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\WeaponSearch.resx">
+      <DependentUpon>WeaponSearch.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="darkangels.db" />
     <None Include="packages.config" />

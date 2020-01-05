@@ -241,6 +241,7 @@
             this.Button_Search.TabIndex = 22;
             this.Button_Search.Text = "Search";
             this.Button_Search.UseVisualStyleBackColor = true;
+            this.Button_Search.Click += new System.EventHandler(this.Button_Search_Click);
             // 
             // Button_Next
             // 
@@ -292,6 +293,7 @@
             // 
             // Button_Delete
             // 
+            this.Button_Delete.Enabled = false;
             this.Button_Delete.Location = new System.Drawing.Point(221, 178);
             this.Button_Delete.Name = "Button_Delete";
             this.Button_Delete.Size = new System.Drawing.Size(219, 23);
@@ -307,6 +309,7 @@
             this.Button_New.TabIndex = 19;
             this.Button_New.Text = "New";
             this.Button_New.UseVisualStyleBackColor = true;
+            this.Button_New.Click += new System.EventHandler(this.Button_New_Click);
             // 
             // WeaponEditor
             // 
@@ -341,6 +344,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Text_Id);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "WeaponEditor";
             this.Text = "WeaponEditor";
             this.Load += new System.EventHandler(this.WeaponEditor_Load);
