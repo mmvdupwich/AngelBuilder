@@ -164,12 +164,19 @@
     <Compile Include="DbClasses\Model.cs" />
     <Compile Include="DbClasses\Unit.cs" />
     <Compile Include="DbClasses\Weapon.cs" />
+    <Compile Include="Editors\WeaponUpdater.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\WeaponUpdater.Designer.cs">
+      <DependentUpon>WeaponUpdater.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Functions\Functions.cs" />
     <Compile Include="Migrations\20191229000327_InitialMigration.cs" />
     <Compile Include="Migrations\20191229000327_InitialMigration.designer.cs">
       <DependentUpon>20191229000327_InitialMigration.cs</DependentUpon>
@@ -189,6 +196,9 @@
     <Compile Include="Editors\WeaponSearch.Designer.cs">
       <DependentUpon>WeaponSearch.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Editors\WeaponUpdater.resx">
+      <DependentUpon>WeaponUpdater.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
