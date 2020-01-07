@@ -110,6 +110,7 @@
             this.Name = "WeaponDeleter";
             this.Text = "WeaponDeleter";
             this.Load += new System.EventHandler(this.WeaponDeleter_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.WeaponDeleter_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

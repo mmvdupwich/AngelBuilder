@@ -33,5 +33,18 @@ namespace AngelBuilder
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
+        private void WeaponDeleter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Button_Delete_Click(this, new EventArgs());
+            }
+
+            if (e.KeyCode == Keys.Escape)
+            {
+                Button_Cancel_Click(this, new EventArgs());
+            }
+        }
     }
 }
