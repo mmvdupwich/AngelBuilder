@@ -2,6 +2,11 @@
 using System.Linq;
 using System.Windows.Forms;
 
+// To do:
+// - Extend Search Function to Name.
+// - Proper try and catch of the Save function
+// - Proper Try and catch of the Intmaker.
+
 namespace AngelBuilder
 {
     public partial class WeaponEditor : Form
@@ -14,68 +19,59 @@ namespace AngelBuilder
 
         private int Index = -1;
         private Weapon[] Weapons_Array;
+        private string Current_Id = "";
+
         private void WeaponEditor_Load(object sender, EventArgs e)
         {
-            Weapon_Array_Set();
-
-            Weapon_Array_Build("All");
+            Weapon_Array_Build();
 
             Weapon_Count();
         }
              
         // The Array Builder, everything passes through here before 
-        private void Weapon_Array_Set()
+        private void Weapon_Array_Build()
         {
-            using (var db = new Context())
-            {
-                Weapons_Array = new Weapon[db.Weapons.Count()];
-            }
-        }
-        private void Weapon_Array_Build(string type)
-        {
-            Weapon_Array_Set();
-
             int a = 0;
             using (var db = new Context())
             {
-                switch (type)
+                Weapons_Array = new Weapon[db.Weapons.Count()];
+
+                for (int i = 0; i < Weapons_Array.Length; i++)
                 {
-                    case "All":
-                        for (int i = 0; i < Weapons_Array.Length; i++)
-                        {
-                            Weapons_Array[i] = new Weapon();
-                        }
+                    Weapons_Array[i] = new Weapon();
+                }
 
-                        foreach (var w in db.Weapons)
-                        {
-                            Console.WriteLine("{0} || {1} || {2} || {3} || {4} || {5} || {6} || {7} || {8}", w.Weapon_Id, w.Weapon_Name, w.Weapon_Points, w.Weapon_Range, w.Weapon_Type, w.Weapon_S, w.Weapon_Ap, w.Weapon_Dmg, w.Weapon_Abi);
+                foreach (var w in db.Weapons)
+                {
+                    Console.WriteLine("{0} || {1} || {2} || {3} || {4} || {5} || {6} || {7} || {8}", w.Weapon_Id, w.Weapon_Name, w.Weapon_Points, w.Weapon_Range, w.Weapon_Type, w.Weapon_S, w.Weapon_Ap, w.Weapon_Dmg, w.Weapon_Abi);
 
-                            Weapons_Array[a].Weapon_Id = w.Weapon_Id;
-                            Weapons_Array[a].Weapon_Name = w.Weapon_Name;
-                            Weapons_Array[a].Weapon_Points = w.Weapon_Points;
-                            Weapons_Array[a].Weapon_Range = w.Weapon_Range;
-                            Weapons_Array[a].Weapon_Type = w.Weapon_Type;
-                            Weapons_Array[a].Weapon_S = w.Weapon_S;
-                            Weapons_Array[a].Weapon_Ap = w.Weapon_Ap;
-                            Weapons_Array[a].Weapon_Dmg = w.Weapon_Dmg;
-                            Weapons_Array[a].Weapon_Abi = w.Weapon_Abi;
-                            a++;
-                        }
-                        break;
-                    case "Single":
-                        break;
-                    default:
-                        break;
-                }                
+                    Weapons_Array[a].Weapon_Id = w.Weapon_Id;
+                    Weapons_Array[a].Weapon_Name = w.Weapon_Name;
+                    Weapons_Array[a].Weapon_Points = w.Weapon_Points;
+                    Weapons_Array[a].Weapon_Range = w.Weapon_Range;
+                    Weapons_Array[a].Weapon_Type = w.Weapon_Type;
+                    Weapons_Array[a].Weapon_S = w.Weapon_S;
+                    Weapons_Array[a].Weapon_Ap = w.Weapon_Ap;
+                    Weapons_Array[a].Weapon_Dmg = w.Weapon_Dmg;
+                    Weapons_Array[a].Weapon_Abi = w.Weapon_Abi;
+                    a++;
+                } 
+                                    
             }
         }
 
         // Saving Functions.
         private void Button_Save_Click(object sender, EventArgs e)
         {
-            this.Weapon_Save(Text_Id.Text, Text_Name.Text, Convert.ToInt32(Text_Points.Text), Text_Range.Text, Text_Type.Text, Text_Strength.Text, Text_Ap.Text, Text_Dmg.Text, Text_Abi.Text);
+            try
+            {
+                this.Weapon_Save(Current_Id, Text_Name.Text, Convert.ToInt32(Text_Points.Text), Text_Range.Text, Text_Type.Text, Text_Strength.Text, Text_Ap.Text, Text_Dmg.Text, Text_Abi.Text);
+            }
+            catch
+            {
+                MessageBox.Show("You entered an invalid Weapon_Id or points value");
+            }
         }
-
         private void Weapon_Save(string id, string name, int points, string range, string type, string s, string ap, string dmg, string abi)
         {
             using(var db = new Context())
@@ -101,6 +97,12 @@ namespace AngelBuilder
                             check.Weapon_Dmg = Text_Dmg.Text;
                             check.Weapon_Abi = Text_Abi.Text;
                             db.SaveChanges();
+                            MessageBox.Show("Saving of Weapon: " + name + " (" + id + ") Successful.");
+                            Button_New_Click(this, new EventArgs());
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nothing Saved");
                         }
                     }
                 }
@@ -109,16 +111,11 @@ namespace AngelBuilder
                     var weapon = new Weapon() { Weapon_Id = id, Weapon_Name = name, Weapon_Points = points, Weapon_Range = range, Weapon_S = s, Weapon_Ap = ap, Weapon_Type = type, Weapon_Dmg = dmg, Weapon_Abi = abi };
                     db.Weapons.Add(weapon);
                     db.SaveChanges();
+                    MessageBox.Show("Saving of Weapon: " + name + " (" + id + ") Successful.");
+                    Button_New_Click(this, new EventArgs());                   
                 }                                                                          
-            }
-            MessageBox.Show("Saving of Weapon: " + name + " (" + id + ") Successful.");
-
-            Index = -1;
-            Weapon_Array_Build("All");
-            Weapon_Count();
-            Button_Check();
-            Label_Amount.Text = "XXX";
-            Weapon_Form_Fill(Index);
+            }          
+            
         }
 
         // Various Functions.
@@ -168,6 +165,7 @@ namespace AngelBuilder
                     Text_Ap_Fill = "AP";
                     Text_Dmg_Fill = "Damage";
                     Text_Abi_Fill = "Ability";
+                    Current_Id = "";
                     break;
                 default:
                     Text_Id_Fill = Weapons_Array[Place].Weapon_Id;
@@ -179,6 +177,8 @@ namespace AngelBuilder
                     Text_Ap_Fill = Weapons_Array[Place].Weapon_Ap;
                     Text_Dmg_Fill = Weapons_Array[Place].Weapon_Dmg;
                     Text_Abi_Fill = Weapons_Array[Place].Weapon_Abi;
+                    Current_Id = Weapons_Array[Place].Weapon_Id;
+                    //Console.WriteLine("Current Id= " + Current_Id);
                     break;
             }            
 
@@ -248,22 +248,22 @@ namespace AngelBuilder
         }
 
         // New Button: Resets everything to onLoad.
-        private void Button_New_Click(object sender, EventArgs e)
+        public void Button_New_Click(object sender, EventArgs e)
         {
             Index = -1;
+            Current_Id = "";
             using (var db = new Context())
             {
                 Weapons_Array = new Weapon[db.Weapons.Count()];
             }
-            Weapon_Array_Build("All");
+            Weapon_Array_Build();
             Button_Check();
             Label_Amount.Text = "XXX";
             Weapon_Count();
-            Weapon_Form_Fill(-1);
+            Weapon_Form_Fill(Index);
         }
 
-        // Search Function Call. For Now Only Searches for Unique Id's
-        // FUTURE TO-DO: Search for Name (and multiple matches).
+        // Search Function Call. For Now Only Searches for Unique Id's.
         private void Button_Search_Click(object sender, EventArgs e)
         {
             using (var searchform = new WeaponSearch())
@@ -290,6 +290,17 @@ namespace AngelBuilder
                     Weapon_Form_Fill(Index);
                 }
             }
+        }
+
+        private void Button_Delete_Click(object sender, EventArgs e)
+        {
+            using(var db = new Context())
+            {
+                var wd = db.Weapons.Single(w => w.Weapon_Id == Current_Id);
+                db.Remove(wd);
+                db.SaveChanges();
+            }
+            Button_New_Click(this, new EventArgs());
         }
     }
 }

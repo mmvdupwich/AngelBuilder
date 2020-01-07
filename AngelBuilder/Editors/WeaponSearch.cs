@@ -56,6 +56,11 @@ namespace AngelBuilder
             {
                 Button_Search_Click(this, new EventArgs());
             }
+
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
         }
     }
 }

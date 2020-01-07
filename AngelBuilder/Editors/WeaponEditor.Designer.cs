@@ -225,11 +225,11 @@
             // Button_Prev
             // 
             this.Button_Prev.Enabled = false;
-            this.Button_Prev.Location = new System.Drawing.Point(221, 91);
+            this.Button_Prev.Location = new System.Drawing.Point(274, 91);
             this.Button_Prev.Name = "Button_Prev";
-            this.Button_Prev.Size = new System.Drawing.Size(106, 23);
+            this.Button_Prev.Size = new System.Drawing.Size(53, 23);
             this.Button_Prev.TabIndex = 20;
-            this.Button_Prev.Text = "<<";
+            this.Button_Prev.Text = "<";
             this.Button_Prev.UseVisualStyleBackColor = true;
             this.Button_Prev.Click += new System.EventHandler(this.Button_Prev_Click);
             // 
@@ -247,9 +247,9 @@
             // 
             this.Button_Next.Location = new System.Drawing.Point(335, 91);
             this.Button_Next.Name = "Button_Next";
-            this.Button_Next.Size = new System.Drawing.Size(106, 23);
+            this.Button_Next.Size = new System.Drawing.Size(53, 23);
             this.Button_Next.TabIndex = 21;
-            this.Button_Next.Text = ">>";
+            this.Button_Next.Text = ">";
             this.Button_Next.UseVisualStyleBackColor = true;
             this.Button_Next.Click += new System.EventHandler(this.Button_Next_Click);
             // 
@@ -300,6 +300,7 @@
             this.Button_Delete.TabIndex = 23;
             this.Button_Delete.Text = "Delete";
             this.Button_Delete.UseVisualStyleBackColor = true;
+            this.Button_Delete.Click += new System.EventHandler(this.Button_Delete_Click);
             // 
             // Button_New
             // 
