@@ -65,6 +65,7 @@ namespace AngelBuilder
         {
             try
             {
+                Current_Id = Text_Id.Text;
                 this.Weapon_Save(Current_Id, Text_Name.Text, Convert.ToInt32(Text_Points.Text), Text_Range.Text, Text_Type.Text, Text_Strength.Text, Text_Ap.Text, Text_Dmg.Text, Text_Abi.Text);
             }
             catch
@@ -292,15 +293,27 @@ namespace AngelBuilder
             }
         }
 
+        // And a Delete Function.
         private void Button_Delete_Click(object sender, EventArgs e)
         {
-            using(var db = new Context())
+            using(var deleter = new WeaponDeleter())
             {
-                var wd = db.Weapons.Single(w => w.Weapon_Id == Current_Id);
-                db.Remove(wd);
-                db.SaveChanges();
-            }
-            Button_New_Click(this, new EventArgs());
+                deleter.Label_Id.Text = Current_Id;
+                deleter.Label_Name.Text = Text_Name.Text;
+
+                var res = deleter.ShowDialog();
+                
+                if (res == DialogResult.OK)
+                {
+                    using (var db = new Context())
+                    {
+                        var wd = db.Weapons.Single(w => w.Weapon_Id == Current_Id);
+                        db.Remove(wd);
+                        db.SaveChanges();
+                    }
+                    Button_New_Click(this, new EventArgs());
+                }
+            }           
         }
     }
 }

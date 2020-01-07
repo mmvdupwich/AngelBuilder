@@ -176,6 +176,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\WeaponDeleter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\WeaponDeleter.Designer.cs">
+      <DependentUpon>WeaponDeleter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Functions\Functions.cs" />
     <Compile Include="Migrations\20191229000327_InitialMigration.cs" />
     <Compile Include="Migrations\20191229000327_InitialMigration.designer.cs">
@@ -201,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\WeaponDeleter.resx">
+      <DependentUpon>WeaponDeleter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
